@@ -10,9 +10,9 @@ You can visit [my domain here](http://www.tettehisrael.com.s3-website-eu-west-1.
 
 Any push to the Master branch will trigger the Github actions i created which will:
 
-  - Terraform init
+  - Terraform `init`
   - Terraform apply (auto approve)
-  
+ 
   
  ## High level description of functionality
  
