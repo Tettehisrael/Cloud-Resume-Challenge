@@ -16,8 +16,6 @@ resource "aws_cloudfront_distribution" "www_s3_distribution" {
   is_ipv6_enabled = true
   default_root_object = "index.html"
 
-  
-
   custom_error_response {
     error_caching_min_ttl = 0
     error_code = 404
@@ -51,17 +49,18 @@ resource "aws_cloudfront_distribution" "www_s3_distribution" {
     }
   }
 
-viewer_certificate {
+  viewer_certificate {
     cloudfront_default_certificate = true
-  }
-  
+  } 
 }
 
 # Cloudfront S3 for redirect to www.
 resource "aws_cloudfront_distribution" "root_s3_distribution" {
+
   origin {
     domain_name = var.domain_name
     origin_id = "S3-.${var.bucket_name}"
+
     custom_origin_config {
       http_port = 80
       https_port = 443
@@ -72,8 +71,6 @@ resource "aws_cloudfront_distribution" "root_s3_distribution" {
 
   enabled = true
   is_ipv6_enabled = true
-
-  
 
   default_cache_behavior {
     allowed_methods = ["GET", "HEAD"]
@@ -101,8 +98,9 @@ resource "aws_cloudfront_distribution" "root_s3_distribution" {
       restriction_type = "none"
     }
   }
-viewer_certificate {
+
+  viewer_certificate {
     cloudfront_default_certificate = true
   }
- 
 }
+

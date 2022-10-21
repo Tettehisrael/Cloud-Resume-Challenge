@@ -3,10 +3,11 @@
 resource "aws_apigatewayv2_api" "api-gateway" {
   name          = "my-lambda-api"
   protocol_type = "HTTP"
-  target        = var.lambda-arn   
-	cors_configuration {
+  target        = var.lambda-arn 
+
+	cors_configuration{
 		allow_origins = ["*"]
-}
+    }
 }
 
 resource "aws_apigatewayv2_integration" "intergation" {
@@ -24,3 +25,4 @@ resource "aws_lambda_permission" "apigw" {
 	principal     = "apigateway.amazonaws.com"
 	source_arn    = "${aws_apigatewayv2_api.api-gateway.execution_arn}/*/*"
 }
+

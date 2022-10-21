@@ -1,3 +1,3 @@
 variable "lambda-arn" {}
-variable "intergation-url"{}
+variable "intergation-url" {}
 variable "lambda-arn2" {}
